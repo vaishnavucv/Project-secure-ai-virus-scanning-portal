@@ -2,6 +2,7 @@
 // Basic configuration for database connection
 
 define('DB_HOST', getenv('PGHOST') ?: '127.0.0.1');
+define('DB_PORT', getenv('PGPORT') ?: '5432');
 define('DB_NAME', getenv('PGDATABASE') ?: 'php_portal');
 define('DB_USER', getenv('PGUSER') ?: 'portal_user');
 define('DB_PASS', getenv('PGPASSWORD') ?: 'portal_pass');
