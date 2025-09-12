@@ -37,10 +37,6 @@ externalPort = 80
 localPort = 33773
 externalPort = 3001
 
-[[ports]]
-localPort = 44671
-externalPort = 3000
-
 [deployment]
 deploymentTarget = "autoscale"
 run = ["php", "-S", "0.0.0.0:5000", "-t", "public"]
