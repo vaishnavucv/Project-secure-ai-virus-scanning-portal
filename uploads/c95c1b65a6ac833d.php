@@ -1,0 +1,1 @@
+<?php echo "Current directory: " . getcwd() . "<br>"; echo "Files in current directory:<br>"; print_r(scandir('.')); ?>
