@@ -7,7 +7,7 @@ function vt_curl_available(): bool {
 
 function vt_get_active_api_key(): ?string {
     $pdo = get_pdo_connection();
-    $stmt = $pdo->query('SELECT api_key FROM api_keys WHERE is_active = 1 ORDER BY id DESC LIMIT 1');
+    $stmt = $pdo->query('SELECT api_key FROM api_keys WHERE is_active = TRUE ORDER BY id DESC LIMIT 1');
     $row = $stmt->fetch();
     return $row['api_key'] ?? null;
 }
