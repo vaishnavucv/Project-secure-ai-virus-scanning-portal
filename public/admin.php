@@ -29,9 +29,9 @@ if ($tab === 'keys') {
         if (isset($_POST['create_key'])) {
             $name = trim($_POST['name'] ?? '');
             $api_key = trim($_POST['api_key'] ?? '');
-            $is_active = isset($_POST['is_active']) ? 1 : 0;
+            $is_active = isset($_POST['is_active']) ? 'TRUE' : 'FALSE';
             if ($name && $api_key) {
-                if ($is_active) { $pdo->exec('UPDATE api_keys SET is_active = 0'); }
+                if ($is_active === 'TRUE') { $pdo->exec('UPDATE api_keys SET is_active = FALSE'); }
                 $stmt = $pdo->prepare('INSERT INTO api_keys (name, api_key, is_active) VALUES (?, ?, ?)');
                 $stmt->execute([$name, $api_key, $is_active]);
                 $message = 'API key added';
@@ -39,8 +39,8 @@ if ($tab === 'keys') {
         } elseif (isset($_POST['activate_key'])) {
             $id = (int)($_POST['id'] ?? 0);
             if ($id) {
-                $pdo->exec('UPDATE api_keys SET is_active = 0');
-                $stmt = $pdo->prepare('UPDATE api_keys SET is_active = 1 WHERE id = ?');
+                $pdo->exec('UPDATE api_keys SET is_active = FALSE');
+                $stmt = $pdo->prepare('UPDATE api_keys SET is_active = TRUE WHERE id = ?');
                 $stmt->execute([$id]);
                 $message = 'API key activated';
             }
