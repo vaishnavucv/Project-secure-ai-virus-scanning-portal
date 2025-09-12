@@ -47,6 +47,7 @@ $scans = $stmt->fetchAll();
                     <th>Sus</th>
                     <th>Undet</th>
                     <th>When</th>
+                    <th>Report</th>
                 </tr>
             </thead>
             <tbody>
@@ -60,6 +61,7 @@ $scans = $stmt->fetchAll();
                         <td><?php echo (int)$s['suspicious_count']; ?></td>
                         <td><?php echo (int)$s['undetected_count']; ?></td>
                         <td><?php echo htmlspecialchars($s['created_at']); ?></td>
+                        <td><a href="/report.php?id=<?php echo (int)$s['id']; ?>">View</a></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
